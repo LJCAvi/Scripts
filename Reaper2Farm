@@ -11,5 +11,5 @@ Frame.Parent = screengui
 local Label = Instance.new("TextLabel")
 Label.Size = UDim2.new(1, 0, 1, 0)
 Label.TextScaled = true
-Label.Text = "Sike Nigga"
+Label.Text = "Optcs a Dumbass Bitch"
 Label.Parent = Frame
