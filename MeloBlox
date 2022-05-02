@@ -47,6 +47,6 @@ boss:Button("Blob",function() --true/false, replaces the current title "Dropdown
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-321, 23, -9)
 end)
 
-bood:Button("Fungi",function()
+boss:Button("Fungi",function()
   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1218, 85.6, 1033)
 end)
