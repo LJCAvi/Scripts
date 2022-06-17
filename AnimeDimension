@@ -125,6 +125,21 @@ spawn(
 		)
 	end
 )
+
+local function getNPC()
+	local dist, thing = math.huge, nil
+	for i,v in pairs(game:GetService("Workspace").Folders.Monsters:GetChildren()) do
+		if v:FindFirstChild("HumanoidRootPart") then
+			local mag = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).magnitude
+			if mag < dist then 
+				dist = mag 
+				thing = v 
+			end
+		end
+	end
+	return thing
+end
+
 j.Idled:Connect(
 	function()
 		h:ClickButton2(Vector2.new())
@@ -986,35 +1001,34 @@ D:AddToggle(
 						)
 						pcall(
 							function()
-								for m, n in pairs(game:GetService("Workspace").Folders.Monsters:GetChildren()) do
-									repeat
-										game:GetService("RunService").Heartbeat:wait()
-										local T =
-											(n.Head.Position -
-												game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-										if T < 999 then
-											Speed2 = _G.Settings.Speed										
-										end
-										if T < 35 then
-											UseMove = true
-										else 
-											UseMove = false
-										end
-										local U = game:service "TweenService"
-										local V = TweenInfo.new(T / Speed2, Enum.EasingStyle.Linear)
-										local W =
-											U:Create(
-												game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"],
-												V,
-												{
-													CFrame = n.HumanoidRootPart.CFrame * CFrame.Angles(math.rad(-90), 0, 0) +
-													Vector3.new(0, _G.Settings.Height, 0)
-												}
-											)
-										W:Play()
-										wait(T / Speed2)
-									until not _G.Settings.AutoTP or n.Humanoid.Health <= 0 or not n.Parent or not n
-								end
+								repeat
+									game:GetService("RunService").Heartbeat:wait()
+									local n = getNPC()
+									local T =
+										(n.Head.Position -
+											game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+									if T < 999 then
+										Speed2 = _G.Settings.Speed										
+									end
+									if T < 35 then
+										UseMove = true
+									else 
+										UseMove = false
+									end
+									local U = game:service "TweenService"
+									local V = TweenInfo.new(T / Speed2, Enum.EasingStyle.Linear)
+									local W =
+										U:Create(
+											game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"],
+											V,
+											{
+												CFrame = n.HumanoidRootPart.CFrame * CFrame.Angles(math.rad(-90), 0, 0) +
+												Vector3.new(0, _G.Settings.Height, 0)
+											}
+										)
+									W:Play()
+									wait(T / Speed2)
+								until not _G.Settings.AutoTP or n.Humanoid.Health <= 0 or not n.Parent or not n
 							end
 						)
 					end
@@ -1044,35 +1058,34 @@ D:AddToggle(
 						)
 						pcall(
 							function()
-								for m, n in pairs(game:GetService("Workspace").Folders.Monsters:GetChildren()) do
-									repeat
-										game:GetService("RunService").Heartbeat:wait()
-										local T =
-											(n.Head.Position -
-												game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-										if T < 999 then
-											Speed2 = _G.Settings.Speed
-										end
-										if T < 35 then
-											UseMove = true
-										else
-											UseMove = false
-										end
-										local U = game:service "TweenService"
-										local V = TweenInfo.new(T / Speed2, Enum.EasingStyle.Linear)
-										local W =
-											U:Create(
-												game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"],
-												V,
-												{
-													CFrame = n.HumanoidRootPart.CFrame * CFrame.Angles(math.rad(90), 0, 0) +
-													Vector3.new(0, _G.Settings.Height1, 0)
-												}
-											)
-										W:Play()
-										wait(T / Speed2)
-									until not _G.Settings.AutoTP1 or n.Humanoid.Health <= 0 or not n.Parent or not n
-								end
+								repeat
+									game:GetService("RunService").Heartbeat:wait()
+									local n = getNPC()
+									local T =
+										(n.Head.Position -
+											game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+									if T < 999 then
+										Speed2 = _G.Settings.Speed
+									end
+									if T < 35 then
+										UseMove = true
+									else
+										UseMove = false
+									end
+									local U = game:service "TweenService"
+									local V = TweenInfo.new(T / Speed2, Enum.EasingStyle.Linear)
+									local W =
+										U:Create(
+											game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"],
+											V,
+											{
+												CFrame = n.HumanoidRootPart.CFrame * CFrame.Angles(math.rad(90), 0, 0) +
+												Vector3.new(0, _G.Settings.Height1, 0)
+											}
+										)
+									W:Play()
+									wait(T / Speed2)
+								until not _G.Settings.AutoTP1 or n.Humanoid.Health <= 0 or not n.Parent or not n
 							end
 						)
 					end
@@ -1095,40 +1108,39 @@ D:AddToggle(
 							break
 						end
 						pcall(
-							function()
-								for m, n in pairs(game:GetService("Workspace").Folders.Monsters:GetChildren()) do
-									repeat
-										game:GetService("RunService").Heartbeat:wait()
-										local T =
-											(n.HumanoidRootPart.Position -
-												game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-										if T < 999 then
-											Speed2 = _G.Settings.Speed
-										elseif T < 1000 then
-											Speed2 = _G.Settings.Speed
-										elseif T >= 1000 then
-											Speed2 = _G.Settings.Speed
-										end
-										if T < 35 then
-											UseMove = true
-										else
-											UseMove = false
-										end
-										local U = game:service "TweenService"
-										local V = TweenInfo.new(T / Speed2, Enum.EasingStyle.Linear)
-										local W =
-											U:Create(
-												game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"],
-												V,
-												{
-													CFrame = n.HumanoidRootPart.CFrame *
-													CFrame.new(0, 0, _G.Settings.distance)
-												}
-											)
-										W:Play()
-										wait(T / Speed2)
-									until not _G.Settings.AutoTP2 or n.Humanoid.Health <= 0 or not n.Parent or not n
-								end
+							function()								
+								repeat
+									game:GetService("RunService").Heartbeat:wait()
+									local n = getNPC()
+									local T =
+										(n.HumanoidRootPart.Position -
+											game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+									if T < 999 then
+										Speed2 = _G.Settings.Speed
+									elseif T < 1000 then
+										Speed2 = _G.Settings.Speed
+									elseif T >= 1000 then
+										Speed2 = _G.Settings.Speed
+									end
+									if T < 35 then
+										UseMove = true
+									else
+										UseMove = false
+									end
+									local U = game:service "TweenService"
+									local V = TweenInfo.new(T / Speed2, Enum.EasingStyle.Linear)
+									local W =
+										U:Create(
+											game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"],
+											V,
+											{
+												CFrame = n.HumanoidRootPart.CFrame *
+												CFrame.new(0, 0, _G.Settings.distance)
+											}
+										)
+									W:Play()
+									wait(T / Speed2)
+								until not _G.Settings.AutoTP2 or n.Humanoid.Health <= 0 or not n.Parent or not n
 							end
 						)
 					end
@@ -1683,7 +1695,6 @@ x:AddToggle(
 								)
 								a1.Died:Connect(
 									function()
-										UseMove = false
 										game.Players.LocalPlayer.Character.Head.PlayerHealthBarGui:Destroy()
 										game:GetService("StarterGui"):SetCoreGuiEnabled(
 										Enum.CoreGuiType.PlayerList,
@@ -1699,13 +1710,6 @@ x:AddToggle(
 		end
 	}
 )
-
-game.Players.LocalPlayer.CharacterAdded:Connect(function(Character)
-	local Humanoid = Character:WaitForChild("Humanoid")
-	Humanoid.Died:Connect(function()
-		UseMove = false
-	end)
-end)
 
 x:AddToggle(
 	{
