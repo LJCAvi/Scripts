@@ -111,6 +111,13 @@ function HideGui()
 		k.Enabled = true
 	end
 end
+
+local function Destroyed(x)
+	if x.Parent then return false end
+	local _, result = pcall(function() x.Parent = x end)
+	return result:match("locked") and true or false
+end
+
 spawn(
 	function()
 		j = game.Players.LocalPlayer
@@ -1004,6 +1011,7 @@ D:AddToggle(
 								repeat
 									game:GetService("RunService").Heartbeat:wait()
 									local n = getNPC()
+									local hrp = n:WaitForChild("HumanoidRootPart")
 									local T =
 										(n.Head.Position -
 											game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
@@ -1028,7 +1036,7 @@ D:AddToggle(
 										)
 									W:Play()
 									wait(T / Speed2)
-								until not _G.Settings.AutoTP or n.Humanoid.Health <= 0 or not n.Parent or not n
+								until not _G.Settings.AutoTP or Destroyed(hrp) or n.Humanoid.Health <= 0 or not n.Parent or not n
 							end
 						)
 					end
@@ -1061,6 +1069,7 @@ D:AddToggle(
 								repeat
 									game:GetService("RunService").Heartbeat:wait()
 									local n = getNPC()
+									local hrp = n:WaitForChild("HumanoidRootPart")
 									local T =
 										(n.Head.Position -
 											game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
@@ -1085,7 +1094,7 @@ D:AddToggle(
 										)
 									W:Play()
 									wait(T / Speed2)
-								until not _G.Settings.AutoTP1 or n.Humanoid.Health <= 0 or not n.Parent or not n
+								until not _G.Settings.AutoTP1 or Destroyed(hrp) or n.Humanoid.Health <= 0 or not n.Parent or not n
 							end
 						)
 					end
@@ -1112,6 +1121,7 @@ D:AddToggle(
 								repeat
 									game:GetService("RunService").Heartbeat:wait()
 									local n = getNPC()
+									local hrp = n:WaitForChild("HumanoidRootPart")
 									local T =
 										(n.HumanoidRootPart.Position -
 											game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
@@ -1140,7 +1150,7 @@ D:AddToggle(
 										)
 									W:Play()
 									wait(T / Speed2)
-								until not _G.Settings.AutoTP2 or n.Humanoid.Health <= 0 or not n.Parent or not n
+								until not _G.Settings.AutoTP2 or Destroyed(hrp) or n.Humanoid.Health <= 0 or not n.Parent or not n
 							end
 						)
 					end
