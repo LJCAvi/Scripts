@@ -1037,6 +1037,7 @@ D:AddToggle(
 									W:Play()
 									wait(T / Speed2)
 								until not _G.Settings.AutoTP or Destroyed(hrp) or n.Humanoid.Health <= 0 or not n.Parent or not n
+								UseMove = false
 							end
 						)
 					end
@@ -1095,6 +1096,7 @@ D:AddToggle(
 									W:Play()
 									wait(T / Speed2)
 								until not _G.Settings.AutoTP1 or Destroyed(hrp) or n.Humanoid.Health <= 0 or not n.Parent or not n
+								UseMove = false
 							end
 						)
 					end
@@ -1151,6 +1153,7 @@ D:AddToggle(
 									W:Play()
 									wait(T / Speed2)
 								until not _G.Settings.AutoTP2 or Destroyed(hrp) or n.Humanoid.Health <= 0 or not n.Parent or not n
+								UseMove = false
 							end
 						)
 					end
